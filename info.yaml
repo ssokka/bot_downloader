@@ -1,0 +1,7 @@
+title: "봇 다운로더"
+version: "1.0.0"
+package_name: "bot_downloader"
+developer: "flaskfarm"
+description: "디스코드 봇"
+home: "https://github.com/flaskfarm/bot_downloader"
+more: "https://raw.githubusercontent.com/flaskfarm/bot_downloader/main/README.md"
