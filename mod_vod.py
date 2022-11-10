@@ -16,6 +16,7 @@ class ModuleVod(PluginModuleBase):
             'vod_item_last_list_option': '',
             f'{self.name}_db_delete_day': '30',
             f'{self.name}_db_auto_delete': 'False',
+            'vod_use_notify': 'False',
         }
         self.web_list_model = ModelVodItem
 
@@ -56,10 +57,13 @@ class ModuleVod(PluginModuleBase):
         if item is None:
             return
         try:
-            
             flag_download = self.condition_check_download_mode(item)
             if flag_download:
                 self.share_copy(item)
+            if P.ModelSetting.get_bool('vod_use_notify'):
+                from tool import ToolNotify
+                msg = f'봇 VOD 수신\n파일: {item.filename}\n로그: {item.log}'
+                ToolNotify.send_message(msg, image_url=item.meta_poster, message_id=f"{P.package_name}_{self.name}")
         except Exception as e:
             P.logger.error('Exception:%s', e)
             P.logger.error(traceback.format_exc())
