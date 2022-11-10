@@ -81,7 +81,7 @@ class ModuleVod(PluginModuleBase):
             except:
                 return {'ret':'warning', 'msg':'구글 드라이브 공유 플러그인이 설치되어 있지 않습니다.'}
 
-            ret = PP.add_copy(item.fileid, item.filename, 'vod', item.meta_genre, item.size, 1, copy_type='file', remote_path=vod_remote_path)
+            ret = PP.add_copy(item.fileid, item.filename, 'bot_vod', item.meta_genre, item.size, 1, copy_type='file', remote_path=vod_remote_path)
 
             item.share_request_time = datetime.now()
             item.request_db_id = ret['request_db_id'] if 'request_db_id' in ret else None
