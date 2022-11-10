@@ -41,6 +41,12 @@ class ModuleVod(PluginModuleBase):
             if item is not None:
                 item.save()
             return jsonify(ret)
+        elif command == 'db_delete':
+            if self.web_list_model.delete_by_id(arg1):
+                ret['msg'] = '삭제하였습니다.'
+            else:
+                ret['ret'] = 'warning'
+                ret['msg'] = '삭제 실패'
 
         return jsonify(ret)
 

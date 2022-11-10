@@ -85,6 +85,13 @@ $("body").on('click', '#whitelist_program_btn', function(e){
   globalSendCommand('option', 'whitelist_program', $(this).data('program'));
 });
 
+$("body").on('click', '#db_delete_btn', function(e){
+  e.preventDefault();
+  globalSendCommand('db_delete', $(this).data('id'), null, null, function(ret){
+    globalRequestSearch(current_page);
+  });
+});
+
 
 
 $("body").on('click', '#share_copy_btn', function(e) {
@@ -158,6 +165,7 @@ function make_list(data) {
     
     tmp = ''
     tmp += j_button('share_copy_btn', '구글 드라이브 공유 복사', {'id':data[i].id}, 'danger');
+    tmp += j_button('db_delete_btn', 'DB 삭제', {'id':data[i].id});
     tmp += j_button('json_btn', 'JSON', {'idx':i});
     tmp += j_button('self_search_btn', '목록 검색', {'name':data[i].meta_title});
     tmp += j_button('blacklist_genre_btn', '제외 장르 추가', {'genre':data[i].meta_genre});
