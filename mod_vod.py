@@ -131,12 +131,12 @@ class ModuleVod(PluginModuleBase):
             else:
                 flag_download = False
                 if item.meta_title is None:
-                    item.log += 'Daum 정보 없음. 다운:Off'
+                    item.log += '메타 정보 없음. 다운:Off'
                     return flag_download
                 vod_whitelist_genre = P.ModelSetting.get_list('vod_whitelist_genre', '|')
                 vod_whitelist_program = P.ModelSetting.get_list('vod_whitelist_program', '|')
 
-                if len(vod_whitelist_genre) > 0 and item.daum_genre in vod_whitelist_genre:
+                if len(vod_whitelist_genre) > 0 and item.meta_genre in vod_whitelist_genre:
                     flag_download = True
                     item.log += '포함 장르. 다운:On'
                 if flag_download == False:
