@@ -47,7 +47,6 @@ $('input[type=radio][name=vod_download_mode]').change(function() {
 });
 
 function set_vod_download_mode(type) {
-  console.log(type)
   $('input[name=vod_download_mode][value="' + type + '"]').attr('checked', true);
   if ( type == 'blacklist') {
     $('#blacklist_div').collapse('show');
