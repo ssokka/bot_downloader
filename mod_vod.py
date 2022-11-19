@@ -65,7 +65,7 @@ class ModuleVod(PluginModuleBase):
                 msg = f'봇 VOD 수신\n파일: {item.filename}\n로그: {item.log}'
                 ToolNotify.send_message(msg, image_url=item.meta_poster, message_id=f"{P.package_name}_{self.name}")
         except Exception as e:
-            P.logger.error('Exception:%s', e)
+            P.logger.error(f"Exception:{str(e)}")
             P.logger.error(traceback.format_exc())
         finally:
             item.save()
@@ -101,7 +101,7 @@ class ModuleVod(PluginModuleBase):
             else:
                 return {'ret':'warning', 'msg': '실패'}
         except Exception as e:
-            P.logger.error('Exception:%s', e)
+            P.logger.error(f"Exception:{str(e)}")
             P.logger.error(traceback.format_exc())
 
 
@@ -148,7 +148,7 @@ class ModuleVod(PluginModuleBase):
                 if not flag_download:
                     item.log += '화이트리스트 모드. 다운:Off'
         except Exception as e: 
-            P.logger.error('Exception:%s', e)
+            P.logger.error(f"Exception:{str(e)}")
             P.logger.error(traceback.format_exc())
         return flag_download
 
@@ -211,11 +211,11 @@ class ModelVodItem(ModelBase):
                 entity.meta_title = data['msg']['data']['meta']['title']
                 entity.meta_poster = data['msg']['data']['meta']['poster']
             else:
-                entity.meta_genre = u'미분류'
+                entity.meta_genre = '미분류'
             entity.save()
             return entity
         except Exception as e:
-            P.logger.error('Exception:%s', e)
+            P.logger.error(f"Exception:{str(e)}")
             P.logger.error(traceback.format_exc())   
 
 
