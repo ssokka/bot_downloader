@@ -16,6 +16,14 @@ setting = {
                 ]
             },
             {
+                'uri': 'share_movie',
+                'name': 'S-MOVIE',
+                'list': [
+                    {'uri': 'setting', 'name': '설정'},
+                    {'uri': 'list', 'name': '목록'},
+                ]
+            },
+            {
                 'uri': 'manual',
                 'name': '매뉴얼',
                 'list': [
@@ -38,8 +46,9 @@ from plugin import *
 P = create_plugin_instance(setting)
 
 try:
+    from .mod_share_movie import ModuleShareMovie
     from .mod_vod import ModuleVod
-    P.set_module_list([ModuleVod])
+    P.set_module_list([ModuleVod, ModuleShareMovie])
 except Exception as e:
     P.logger.error(f'Exception:{str(e)}')
     P.logger.error(traceback.format_exc())
