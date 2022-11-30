@@ -47,19 +47,6 @@ $(document).ready(function(){
   }
 });
 
-$("body").on('change', '#order', function(e){
-  globalRequestSearch(1);
-});
-
-$("body").on('change', '#option1', function(e){
-  globalRequestSearch(1);
-});
-
-$("body").on('click', '#json_btn', function(e){
-  e.preventDefault();
-  showModal(current_data.list[$(this).data('idx')]);
-});
-
 $("body").on('click', '#self_search_btn', function(e){
   e.preventDefault();
   $("#keyword").val($(this).data('name'));
@@ -85,14 +72,6 @@ $("body").on('click', '#whitelist_program_btn', function(e){
   e.preventDefault();
   globalSendCommand('option', 'whitelist_program', $(this).data('program'));
 });
-
-$("body").on('click', '#db_delete_btn', function(e){
-  e.preventDefault();
-  globalSendCommand('db_delete', $(this).data('id'), null, null, function(ret){
-    globalRequestSearch(current_page);
-  });
-});
-
 
 
 $("body").on('click', '#share_copy_btn', function(e) {
@@ -123,9 +102,9 @@ $("body").on('click', '#share_copy_btn', function(e) {
 function make_list(data) {
   str = '';
   for (i in data) {
-    console.log(data[i])
+    //console.log(data[i])
     str += j_row_start();
-    str += j_col(1, (parseInt(i) + 1));
+    str += j_col(1, data[i].id);
     tmp = '';
     if (data[i].meta_poster != null)
       tmp = '<img src="' + data[i].meta_poster + '" class="img-fluid rounded">';
