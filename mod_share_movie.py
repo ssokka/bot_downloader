@@ -97,6 +97,7 @@ class ModuleShareMovie(PluginModuleBase):
         try:
             download_mode = P.ModelSetting.get(f'{self.name}_download_mode')
             if download_mode == 'none':
+                item.log += '다운로드 모드: '
                 return False
             if download_mode == 'blacklist':
                 item.log += "블랙리스트: "
