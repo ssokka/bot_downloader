@@ -30,6 +30,7 @@
     {{ macros.m_tab_content_end() }} 
 
     {{ macros.m_tab_content_start('whitelist', false) }}
+      {{ macros.info_text('', '조건', "조건은 OR로 동작합니다. 하나의 조건만 받음") }}
       {{ macros.setting_input_textarea('share_movie_whitelist_cate', '포함 카테고리', value=arg['share_movie_whitelist_cate'], row=3, desc=['빈칸인 경우 검사하지 않습니다. 구분자 , ']) }}
       {{ macros.setting_input_textarea('share_movie_whitelist_genre', '포함 장르', value=arg['share_movie_whitelist_genre'], row=3, desc=['빈칸인 경우 검사하지 않습니다. 구분자 , ']) }}
       {{ macros.setting_input_textarea('share_movie_whitelist_country', '포함 국가', value=arg['share_movie_whitelist_country'], row=3, desc=['빈칸인 경우 검사하지 않습니다. 구분자 , ']) }}
