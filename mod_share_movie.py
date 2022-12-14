@@ -194,7 +194,7 @@ class ModelShareMovieItem(ModelBase):
     @classmethod
     def process_discord_data(cls, data):
         try:
-            P.logger.error(d(data))
+            #P.logger.error(d(data))
             entity = cls.get_by_folderid(data['msg']['data']['folderid'])
             if entity is not None:
                 return
