@@ -91,13 +91,11 @@ function make_list(data) {
     str += j_col(2, tmp);
     right = j_row_start();
     tmp = '';
-    tmp += j_row_start();
     tmp += j_info_text("폴더", data[i].foldername, 2, 10);
     tmp += j_info_text("파일", data[i].count + '개 / ' + humanFileSize(data[i].size), 2, 10);
     tmp += j_info_text("장르", data[i].genre, 2, 10);
     tmp += j_info_text("국가", data[i].country, 2, 10);
     tmp += j_info_text("로그", data[i].log.trim(), 2, 10);
-    tmp += j_row_end();
     right += j_col(9, tmp);
 
     tmp = data[i].created_time + ' (봇 수신)';
