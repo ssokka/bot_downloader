@@ -120,7 +120,7 @@ class ModuleShareMovie(PluginModuleBase):
                 cond_year = P.ModelSetting.get(f'{self.name}_blacklist_year')
                 if cond_year != '' and '-' in cond_year:
                     tmp = cond_year.split('-')
-                    if int(tmp[0]) <= item.year and item.year >= int(tmp[1]):
+                    if int(tmp[0]) <= item.year and item.year <= int(tmp[1]):
                         return False
                 return True
 
@@ -145,7 +145,7 @@ class ModuleShareMovie(PluginModuleBase):
                 cond_year = P.ModelSetting.get(f'{self.name}_whitelist_year')
                 if cond_year != '' and '-' in cond_year:
                     tmp = cond_year.split('-')
-                    if int(tmp[0]) <= item.year and item.year >= int(tmp[1]):
+                    if int(tmp[0]) <= item.year and item.year <= int(tmp[1]):
                         return True
                 return flag_download
 
