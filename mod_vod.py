@@ -11,6 +11,7 @@ class ModuleVod(PluginModuleBase):
             'vod_download_mode' : 'none', #Nothing, 모두받기, 블랙, 화이트
             'vod_blacklist_genre' : '',
             'vod_blacklist_program' : '',
+            'vod_blacklist_file' : '.1080p-SW.mp4',
             'vod_whitelist_genre' : '',
             'vod_whitelist_program' : '',
             'vod_item_last_list_option': '',
@@ -117,6 +118,7 @@ class ModuleVod(PluginModuleBase):
                     return flag_download
                 vod_blacklist_genre = P.ModelSetting.get_list('vod_blacklist_genre', '|')
                 vod_blacklist_program = P.ModelSetting.get_list('vod_blacklist_program', '|')
+                vod_blacklist_file = P.ModelSetting.get_list('vod_blacklist_file', '|')
                 if len(vod_blacklist_genre) > 0 and item.meta_genre in vod_blacklist_genre:
                     flag_download = False
                     item.log += '제외 장르. 다운:Off'
@@ -125,6 +127,12 @@ class ModuleVod(PluginModuleBase):
                         if item.meta_title.replace(' ', '').find(program_name.replace(' ', '')) != -1:
                             flag_download = False
                             item.log += '제외 프로그램. 다운:Off'
+                            break
+                if flag_download:
+                    for file_name in vod_blacklist_file:
+                        if item.filename.replace(' ', '').find(file_name.replace(' ', '')) != -1:
+                            flag_download = False
+                            item.log += '제외 파일. 다운:Off'
                             break
                 if flag_download:
                     item.log += '블랙리스트 모드. 다운:On'
