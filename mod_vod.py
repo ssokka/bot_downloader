@@ -11,7 +11,7 @@ class ModuleVod(PluginModuleBase):
             'vod_download_mode' : 'none', #Nothing, 모두받기, 블랙, 화이트
             'vod_blacklist_genre' : '',
             'vod_blacklist_program' : '',
-            'vod_blacklist_file' : '.1080p-SW.mp4',
+            'vod_blacklist_file' : '1080p-SW.mp4',
             'vod_whitelist_genre' : '',
             'vod_whitelist_program' : '',
             'vod_item_last_list_option': '',
